@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const config = require('./config.json')
+const run = require('./run.json');
+const bear = require('./bear.js')
 
 //Glitch Hosting
 
@@ -21,4 +23,4 @@ client.on("ready", () => {
     console.log('Index Ready!');
 })
 
-client.login(config.token);
+client.login(run.token);
