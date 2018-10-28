@@ -27,13 +27,30 @@ client.on("message", async message => {
 
 
     if(command === "bear") {
+        var bearname = args.join(" ").toLowerCase();
         if(!args[0]) {
             helpembeds(helpembed);
             message.channel.send(helpembed)
         }
-        if(args[0] == "polarbear") {
-          message.channel.send(pbearembed)
-        }
+       if (fs.existsSync(`./src/bears/${bearname}.json`)) {
+           const beartype = require(`./src/bears/${bearname}.json`);
+           var bearembed = new Discord.RichEmbed();
+
+           bearembed.setTitle("Bear Information")
+           .addField("Name :", beartype.name)
+           .addField("Living Environment :", beartype.environment)
+           .addField("Size :", beartype.size)
+           .addField("Weight :", beartype.weight)
+           .addField("Vulnerable :", beartype.vulnerablespecies)
+           .addField("Extra Information :", beartype.extrainfo)
+           .setFooter('Bear Information Bot')
+           .setTimestamp();
+
+           message.channel.send(bearembed)
+}else{
+    if(!args[0]) return;
+    message.reply(`We couldn't find a bear called : ${bearname}`)
+}
     }
 
     if(command === "say") {
@@ -41,6 +58,10 @@ client.on("message", async message => {
         var say = args.join(' ')
         message.channel.send(say)
     }
+    if(command === "log") {
+        var log = fs.readFileSync("./src/progress.md", {"encoding": "utf-8"});
+          message.channel.send(log)
+        }
 })
 
 client.login(run.token);
