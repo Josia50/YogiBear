@@ -15,18 +15,9 @@ client.on("message", async message => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    var helpembed = new Discord.RichEmbed();
-
-    var pbearembed = new Discord.RichEmbed();
-    var pbeartext = fs.readFileSync("./src/bears/polarbear", {encoding: "utf-8"});
-
-    pbearembed.setTitle('**Polar Bear**')
-    .setDescription(pbeartext)
-    .setFooter('Bear Information Bot')
-    .setTimestamp()
-
 
     if(command === "bear") {
+        var helpembed = new Discord.RichEmbed();
         var bearname = args.join(" ").toLowerCase();
         if(!args[0]) {
             helpembeds(helpembed);
@@ -37,6 +28,7 @@ client.on("message", async message => {
            var bearembed = new Discord.RichEmbed();
 
            bearembed.setTitle("Bear Information")
+           .setThumbnail(beartype.url)
            .addField("Name :", beartype.name)
            .addField("Living Environment :", beartype.environment)
            .addField("Size :", beartype.size)
