@@ -26,18 +26,7 @@ client.on("message", async message => {
        if (fs.existsSync(`./src/bears/${bearname}.json`)) {
            const beartype = require(`./src/bears/${bearname}.json`);
            var bearembed = new Discord.RichEmbed();
-
-           bearembed.setTitle("Bear Information")
-           .setThumbnail(beartype.url)
-           .addField("Name :", beartype.name)
-           .addField("Living Environment :", beartype.environment)
-           .addField("Size :", beartype.size)
-           .addField("Weight :", beartype.weight)
-           .addField("Vulnerable :", beartype.vulnerablespecies)
-           .addField("Extra Information :", beartype.extrainfo)
-           .setFooter('Bear Information Bot')
-           .setTimestamp();
-
+           getbearembed(bearembed, beartype);
            message.channel.send(bearembed)
 }else{
     if(!args[0]) return;
@@ -56,7 +45,25 @@ client.on("message", async message => {
         }
 })
 
+
+client.on("ready", () =>{
+    console.log("Bear ready")
+})
+
 client.login(run.token);
+
+function getbearembed(bearembed, beartype) {
+    bearembed.setTitle("Bear Information")
+        .setThumbnail(beartype.url)
+        .addField("Name :", beartype.name)
+        .addField("Living Environment :", beartype.environment)
+        .addField("Size :", beartype.size)
+        .addField("Weight :", beartype.weight)
+        .addField("Vulnerable :", beartype.vulnerablespecies)
+        .addField("Extra Information :", beartype.extrainfo)
+        .setFooter('Bear Information Bot')
+        .setTimestamp();
+}
 
 function helpembeds(helpembed) {
     helpembed.setTitle('Bear Information')
