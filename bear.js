@@ -1,8 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const express = require('express');
-const app = express();
-const http = require('http');
 const config = require('./config.json')
 const run = require('./run.json');
 const fs = require('fs')
@@ -37,6 +34,7 @@ client.on("message", async message => {
     if(command === "say") {
         if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply('You don\'t have permission to use this!'); 
         var say = args.join(' ')
+        message.delete()
         message.channel.send(say)
     }
     if(command === "log") {
@@ -68,6 +66,8 @@ function getbearembed(bearembed, beartype) {
 function helpembeds(helpembed) {
     helpembed.setTitle('Bear Information')
         .addField('**Polar Bear**', "+bear polarbear")
+        .addField('**Grizzly Bear**', "+bear grizzlybear")
+        .addField('**Cave Bear**', "+bear cavebear")
         .setFooter('Bear Information Bot')
         .setTimestamp();
 }

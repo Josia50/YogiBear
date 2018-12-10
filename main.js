@@ -22,7 +22,7 @@ const bear = require('./bear.js')
 client.on("ready", () => {
     console.log('Index Ready!');
     client.user.setStatus('Online')
-    client.user.setActivity('WIP - Contact Josia50')
+    client.user.setActivity('WIP')
 })
 
 client.login(run.token);

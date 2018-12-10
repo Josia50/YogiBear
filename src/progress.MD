@@ -4,6 +4,10 @@
 
 #Bears
 + Added Polar Bear
++ Added Grizzly Bear
++ Added Teddy Bear
++ Added Cave Bear
+
 
 #Bot
 + Added Bear Search
