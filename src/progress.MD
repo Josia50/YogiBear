@@ -7,7 +7,7 @@
 + Added Grizzly Bear
 + Added Teddy Bear
 + Added Cave Bear
-
++ Added Panda Bear
 
 #Bot
 + Added Bear Search

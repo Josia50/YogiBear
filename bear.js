@@ -37,10 +37,13 @@ client.on("message", async message => {
         message.delete()
         message.channel.send(say)
     }
+
     if(command === "log") {
+        if(message.guild.owner || message.author.id == run.ownid) {
         var log = fs.readFileSync("./src/progress.md", {"encoding": "utf-8"});
           message.channel.send(log)
         }
+    }
 })
 
 
@@ -68,6 +71,7 @@ function helpembeds(helpembed) {
         .addField('**Polar Bear**', "+bear polarbear")
         .addField('**Grizzly Bear**', "+bear grizzlybear")
         .addField('**Cave Bear**', "+bear cavebear")
+        .addField('**Panda Bear**', "+bear pandabear")
         .setFooter('Bear Information Bot')
         .setTimestamp();
 }
