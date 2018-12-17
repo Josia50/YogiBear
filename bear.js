@@ -68,10 +68,10 @@ function getbearembed(bearembed, beartype) {
 
 function helpembeds(helpembed) {
     helpembed.setTitle('Bear Information')
-        .addField('**Polar Bear**', "+bear polarbear")
-        .addField('**Grizzly Bear**', "+bear grizzlybear")
-        .addField('**Cave Bear**', "+bear cavebear")
-        .addField('**Panda Bear**', "+bear pandabear")
+        .addField('**Polar Bear**', "+bear polar")
+        .addField('**Grizzly Bear**', "+bear grizzly")
+        .addField('**Cave Bear**', "+bear cave")
+        .addField('**Panda Bear**', "+bear panda")
         .setFooter('Bear Information Bot')
         .setTimestamp();
 }
